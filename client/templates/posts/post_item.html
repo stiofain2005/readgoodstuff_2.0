@@ -1,0 +1,34 @@
+<!-- template for the actual post -->
+
+<template name="postItem">
+  <div class="post col-lg-3 col-md-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div id="url-text" class="col-xs-12">
+                    <h4><a href="{{url}}" target="_blank" class="tracked">{{shortTitle}}</a></h4>
+                </div>
+                <div class="col-xs-12">
+                    <img src={{imageUrl}} alt={{title}} title={{title}}>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <h4 id="siteName">Site : {{domain}}</h4>
+            <h4>Category : {{category}}</h4>
+            <h4>User : {{user}}</h4>
+            <p>
+                <!-- if the post has been published -->
+                {{#if publish}}
+                    <strong>Published</strong>
+                {{else}}
+                    Saved
+                {{/if}}
+
+                <!-- show the edit button if it the user's post -->
+                {{#if ownPost}}<a id="edit-button" href="{{pathFor 'postEdit'}}" >Edit</a>{{/if}}
+            </p>
+        </div>
+    </div>
+  </div>
+</template>

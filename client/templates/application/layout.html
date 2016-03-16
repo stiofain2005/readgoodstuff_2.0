@@ -1,0 +1,55 @@
+<!-- main layout template that holds the header and the postList templates-->
+
+<template name="layout">
+
+    <div id="wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">ReadGoodStuff</a>
+        </div>
+        <ul class="nav navbar-left top-nav">
+
+
+        </ul>
+        <ul class="nav navbar-right top-nav">
+            <!-- if user is logged in then show add post & Filter otherwise sign up -->
+            <li id="addpost"><a href="{{pathFor 'postSubmit'}}"><span class="glyphicon glyphicon-plus" title="Add Post"></span></a></li>
+            <li id="twitter"><a href="https://twitter.com/@read_good_stuff" target="_blank"><img src="TwitterLogo_white.png" alt="Follow us on Twitter" width="30" height="30" border="0" title="Follow Us on Twitter"></a></li>
+            <li id="facebook"><a href="https://www.facebook.com/readgoodstuff/" target="_blank"><img src="facebook_logo.png" alt="Follow us on Facebook" width="20" height="20" border="0" title="Follow Us on Facebook"></a></li>
+            <!--<li id="email"><a href="/"><span class="glyphicon glyphicon-envelope" title="Email"></span></a></li>-->
+
+            {{>loginButtons}}
+
+        </ul>
+
+        <div class="collapse navbar-collapse navHeaderCollapse" aria-expanded="false" style="height: 1px;">
+
+            <ul class = "nav navbar-nav side-nav">
+
+                <li id="myposts"><a href="{{pathFor 'ownPostsList'}}">My Posts</a></li>
+                <li id="all" class="active"><a href="/">All</a></li>
+                <li id="tech"><a href="/">Tech</a></li>
+                <li id="business"><a href="/">Business</a></li>
+                <li id="health"><a href="/">Health</a></li>
+                <li id="culture"><a href="/">Culture</a></li>
+                <li id="sport"><a href="/">Sport</a></li>
+                <li id="random"><a href="/">Random</a></li>
+                <li id="series"><a href="/">Series</a></li>
+                <li id="totw"><a href="/">Topic of the Week!!!</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                {{>yield}}
+            </div>
+        </div>
+    </div>
+</template>
