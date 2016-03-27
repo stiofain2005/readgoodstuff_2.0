@@ -64,6 +64,33 @@ h4{
     font-family:'Playfair Display', serif;
     text-align:center;
     color:black;
+    font-weight: bold;
+}
+
+#about-banner{
+    font-family:'Playfair Display', serif;
+    text-align:center;
+    color:black;
+    font-weight: bold;
+}
+
+.about-container p{
+    font-family:'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.about-container li{
+    font-family:'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.about-heading{
+    font-family:'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: underline;
 }
 
 .btn{

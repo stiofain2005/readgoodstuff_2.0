@@ -19,9 +19,15 @@ Template.postSubmit.events({
             publishVar = false;
         }
 
+        /* The below uses embedly to extract info from the url */
+
+        // use the embedly extract function with the url
         var embObj = Embedly.extract($(e.target).find('[name=url]').val());
+
+        // variable for tracking the post title
         var postTitle;
 
+        // if there is no title from embedly and the title box is hidden
         if(embObj.title == undefined && document.getElementById("title-input-text").innerHTML == "T")
         {
             alert('The title of the post is invalid');
@@ -31,13 +37,17 @@ Template.postSubmit.events({
             return;
         }
 
+        // if there is a title box
         if(document.getElementById("title-input-text").innerHTML == "Title"){
+            // read title from box
             postTitle = $(e.target).find('[name=title]').val();
         }
         else{
+            // else use embedly
             postTitle = embObj.title;
         }
 
+        // if there are no images use the stock image
         if(embObj.images[0] == undefined){
             embImg = "https://pixabay.com/static/uploads/photo/2015/05/31/10/55/man-791049_960_720.jpg";
         }
@@ -45,7 +55,6 @@ Template.postSubmit.events({
             embImg = embObj.images[0].url;
         }
 
-        // ******** catch errors **********
 
         // set post to the user input
         var post = {

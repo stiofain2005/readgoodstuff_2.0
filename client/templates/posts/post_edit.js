@@ -16,10 +16,12 @@ Template.postEdit.events({
 
         // get the current post id
         var currentPostId = this._id;
-        var oldUrl = this.url;
 
+        /* The below uses embedly to extract info from the url */
 
+        // use the embedly extract function with the url
         var embObj = Embedly.extract($(e.target).find('[name=url]').val());
+        // if there are no images use the stock image
         if(embObj.images[0] == undefined){
             embImg = "https://pixabay.com/static/uploads/photo/2015/05/31/10/55/man-791049_960_720.jpg";
         }
@@ -27,10 +29,9 @@ Template.postEdit.events({
             embImg = embObj.images[0].url;
         }
 
-        // need to catch errors here if the url isnt right and embedly captures nothing
 
 
-        // object of the current posts attributes
+        // object of the edited post attributes
         var postProperties = {
             url: $(e.target).find('[name=url]').val(),
             title: $(e.target).find('[name=title]').val(),
@@ -39,7 +40,8 @@ Template.postEdit.events({
             imageUrl: embImg
         };
 
-        // call postUpdate defined in posts.js
+        // call postUpdate defined in posts.js. Pass the publishDate so that it can be set if it hasnt already been
+        // published ie saved
         Meteor.call('postUpdate', currentPostId, postProperties, this.publishDate, function(error, result){
             if (error)
                 return alert(error.reason);

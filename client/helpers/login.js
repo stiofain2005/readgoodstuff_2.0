@@ -1,12 +1,18 @@
 /**
  * Created by stephencampbell on 31/01/2016.
+ *
+ * This code sets up the cookies once a user logs in for the first time. This cookie is used by the chrome extesnion
+ *
  */
+
+
 
 var cookieId = getCookie("userId");
 
+// this code will run every time something changes in this case when user logs in
 Tracker.autorun(function(){
     if(Meteor.userId()){
-        //console.log(cookieId + "   " + Meteor.userId());
+        // if cookie not set for this user
         if(cookieId != Meteor.userId()){
             setCookie("userId", Meteor.userId(), 365);
             setCookie("userName", Meteor.user().username, 365);
@@ -25,6 +31,7 @@ function setCookie(cname, cvalue, exdays){
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 
+// function to get the cookie
 function getCookie(cname){
     var name = cname + "=";
     // split the cookies into an array
