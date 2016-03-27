@@ -22,11 +22,17 @@ Template.postEdit.events({
         // use the embedly extract function with the url
         var embObj = Embedly.extract($(e.target).find('[name=url]').val());
         // if there are no images use the stock image
-        if(embObj.images[0] == undefined){
+
+        if(embObj == false){
             embImg = "https://pixabay.com/static/uploads/photo/2015/05/31/10/55/man-791049_960_720.jpg";
         }
         else {
-            embImg = embObj.images[0].url;
+            if (embObj.images[0] == undefined) {
+                embImg = "https://pixabay.com/static/uploads/photo/2015/05/31/10/55/man-791049_960_720.jpg";
+            }
+            else {
+                embImg = embObj.images[0].url;
+            }
         }
 
 

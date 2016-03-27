@@ -2,7 +2,12 @@ Template.postItem.helpers({
 
     // ownPost object returns if the current user is equal to the posts userID or if Mark or Steve
     ownPost:function(){
-        return this.userId === Meteor.userId() || Meteor.user().username === "steve" || Meteor.user().username === "mark";
+        try {
+            return this.userId === Meteor.userId() || Meteor.user().username === "steve" || Meteor.user().username === "mark";
+        }
+        catch(e){
+            return false;
+        }
     },
 
     // shortens the title of the post to 80 character limit

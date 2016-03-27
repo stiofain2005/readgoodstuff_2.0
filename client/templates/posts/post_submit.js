@@ -27,8 +27,8 @@ Template.postSubmit.events({
         // variable for tracking the post title
         var postTitle;
 
-        // if there is no title from embedly and the title box is hidden
-        if(embObj.title == undefined && document.getElementById("title-input-text").innerHTML == "T")
+        // if embedly returns false and the title box is hidden
+        if(embObj == false && document.getElementById("title-input-text").innerHTML == "T")
         {
             alert('The title of the post is invalid');
             document.getElementById("title-input").style.display = "block";
@@ -47,13 +47,20 @@ Template.postSubmit.events({
             postTitle = embObj.title;
         }
 
-        // if there are no images use the stock image
-        if(embObj.images[0] == undefined){
+        // if embedly fails
+        if(embObj == false){
             embImg = "https://pixabay.com/static/uploads/photo/2015/05/31/10/55/man-791049_960_720.jpg";
         }
-        else {
-            embImg = embObj.images[0].url;
+        else{
+            // if there are no images use the stock image
+            if(embObj.images[0] == undefined){
+                embImg = "https://pixabay.com/static/uploads/photo/2015/05/31/10/55/man-791049_960_720.jpg";
+            }
+            else {
+                embImg = embObj.images[0].url;
+            }
         }
+
 
 
         // set post to the user input
