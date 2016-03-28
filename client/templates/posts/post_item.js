@@ -56,10 +56,13 @@ Template.postItem.events({
 
         // find the post that was clicked on and update the clicks attribute by 1
         var clickPost = Posts.findOne({url:href, publish:true});
-        Meteor.call('postUpdateClick', clickPost , function(error, result){
-            if (error)
-                return alert(error.reason);
-        });
+
+        if(clickPost != undefined) {
+            Meteor.call('postUpdateClick', clickPost, function (error, result) {
+                if (error)
+                    return alert(error.reason);
+            });
+        }
 
     }
 

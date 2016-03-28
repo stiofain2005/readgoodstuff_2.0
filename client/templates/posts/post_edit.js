@@ -54,7 +54,18 @@ Template.postEdit.events({
             if(result.postExists)
                 alert('This link has already been posted');
 
-            Router.go('postList');
+            Session.set('category', 'All');
+            Session.set('filter',1000*60*60*24*7);
+            Session.set('filter-name',"This Week");
+            Session.set('sort','Latest');
+
+            // go the postList route which is the main page or stay on myposts
+            if(publishVar == true){
+                Router.go('postList');
+            }
+            else{
+                Router.go('ownPostsList');
+            }
         });
 
     },
@@ -68,8 +79,18 @@ Template.postEdit.events({
             // remove the post from the database
             Posts.remove(currentPostId);
 
-            // go the postList route which is the main page
-            Router.go('postList');
+            Session.set('filter',1000*60*60*24*7);
+            Session.set('filter-name',"This Week");
+            Session.set('sort','Latest');
+
+            // go the postList route which is the main page or stay on myposts
+            if(Session.get('category') != 'My Posts'){
+                Session.set('category', 'All');
+                Router.go('postList');
+            }
+            else{
+                Router.go('ownPostsList');
+            }
         }
     }
 });

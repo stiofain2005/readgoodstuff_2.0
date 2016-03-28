@@ -82,7 +82,19 @@ Template.postSubmit.events({
             if(result.postExists)
                 alert('This link has already been posted');
 
-            Router.go('postList');
+
+            Session.set('category', 'All');
+            Session.set('filter',1000*60*60*24*7);
+            Session.set('filter-name',"This Week");
+            Session.set('sort','Latest');
+
+            if(publishVar == true){
+                Router.go('postList');
+            }
+            else{
+                Router.go('ownPostsList');
+            }
+
         });
 
     }

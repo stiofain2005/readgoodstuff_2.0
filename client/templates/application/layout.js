@@ -14,10 +14,10 @@ Template.layout.events({
     'click .navbar-brand': function(e) {
 
         Session.set('category', 'All');
-        document.getElementById("category-banner").innerHTML = Session.get('category');
         Session.set('filter',1000*60*60*24*7);
         Session.set('filter-name',"This Week");
         Session.set('sort','Latest');
+        document.getElementById("category-banner").innerHTML = Session.get('category') + " - " + Session.get('filter-name') ;
     },
 
     'click #all': function(e) {
@@ -68,5 +68,6 @@ Template.layout.events({
     'click #myposts': function(e) {
         Session.set('category', 'My Posts');
         document.getElementById("category-banner").innerHTML = Session.get('category') + " - " + Session.get('filter-name');
+
     }
 });

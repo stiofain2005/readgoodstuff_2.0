@@ -13,12 +13,12 @@ Template.ownPostsList.helpers({
                 // if there is no date filter chosen
                 if(Session.get('filter')===0){
 
-                    return Posts.find({}, {sort: {publishDate:-1}});
+                    return Posts.find({}, {sort: {submitted:-1}});
                 }
                 else{
 
                     //if there is a date filter chosen apply it
-                    return Posts.find({publishDate : {$gte : new Date((new Date()).getTime() - Session.get('filter'))}}, {sort: {publishDate:-1}});
+                    return Posts.find({submitted : {$gte : new Date((new Date()).getTime() - Session.get('filter'))}}, {sort: {submitted:-1}});
                 }
 
             }
@@ -33,7 +33,7 @@ Template.ownPostsList.helpers({
                 // if there is a date filter apply it
                 else{
 
-                    return Posts.find({publishDate : {$gte : new Date((new Date()).getTime() - Session.get('filter'))}}, {sort: {clicks:-1}});
+                    return Posts.find({submitted : {$gte : new Date((new Date()).getTime() - Session.get('filter'))}}, {sort: {clicks:-1}});
                 }
             }
 
