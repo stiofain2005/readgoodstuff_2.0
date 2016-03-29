@@ -54,10 +54,6 @@ Template.postEdit.events({
             if(result.postExists)
                 alert('This link has already been posted');
 
-            Session.set('category', 'All');
-            Session.set('filter',1000*60*60*24*7);
-            Session.set('filter-name',"This Week");
-            Session.set('sort','Latest');
 
             // go the postList route which is the main page or stay on myposts
             if(publishVar == true){
@@ -79,13 +75,8 @@ Template.postEdit.events({
             // remove the post from the database
             Posts.remove(currentPostId);
 
-            Session.set('filter',1000*60*60*24*7);
-            Session.set('filter-name',"This Week");
-            Session.set('sort','Latest');
-
             // go the postList route which is the main page or stay on myposts
             if(Session.get('category') != 'My Posts'){
-                Session.set('category', 'All');
                 Router.go('postList');
             }
             else{

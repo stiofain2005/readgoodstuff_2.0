@@ -10,6 +10,12 @@ Session.setDefault('filter',1000*60*60*24*7);
 Session.setDefault('filter-name', "This Week");
 
 Template.postList.helpers({
+
+    category:function(){
+        return Session.get('category') + " - " + Session.get('filter-name');
+    },
+
+
     posts:function(){
         // if no category is picked ie main page
         if(Session.get('category') === 'All'){
