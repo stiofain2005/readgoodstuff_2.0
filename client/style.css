@@ -50,6 +50,11 @@ body{
     #page-wrapper{
         padding-top: 20px;
     }
+
+    .dropdown-menu{
+        left:auto;
+        right:-50%;
+    }
 }
 
 .banner{

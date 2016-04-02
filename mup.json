@@ -2,7 +2,7 @@
   // Server authentication info
   "servers": [
     {
-      "host": "54.171.195.71",
+      "host": "52.48.48.166",
       "username": "ubuntu",
       //"password": "password"
       // or pem file (ssh based authentication)
@@ -34,7 +34,7 @@
 
   // Configure environment
   "env": {
-    "ROOT_URL": "http://test.readstuff.com",
+    "ROOT_URL": "http://www.readgoodstuff.com",
     "PORT": "80"
   },
 
